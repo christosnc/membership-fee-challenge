@@ -3,8 +3,8 @@ const MINIMUM_FEE = 120;
 
 class OrganisationUnit{
   name: string;
-  config: OrganisationUnitConfig;
-  parent: OrganisationUnit;
+  config?: OrganisationUnitConfig;
+  parent?: OrganisationUnit;
 
   constructor(name: string, organisation_unit_config?: OrganisationUnitConfig) {
     this.name = name;
@@ -23,7 +23,7 @@ class OrganisationUnitConfig{
 }
 
 class Client extends OrganisationUnit{
-  divisions: Array<Division>;
+  divisions: Array<Division> = [];
 
   createDivision(name: string, organisation_unit_config?: OrganisationUnitConfig){
     this.divisions.push(new Division(name, this, organisation_unit_config));
@@ -32,7 +32,7 @@ class Client extends OrganisationUnit{
 
 class Division extends OrganisationUnit {
   parent: Client;
-  areas: Array<Area>;
+  areas: Array<Area> = [];
 
   constructor(name: string, parent: Client, organisation_unit_config?: OrganisationUnitConfig) {
     super(name, organisation_unit_config);
@@ -45,7 +45,7 @@ class Division extends OrganisationUnit {
 
 class Area extends OrganisationUnit {
   parent: Division;
-  branches: Array<Branch>;
+  branches: Array<Branch> = [];
 
   constructor(name: string, parent: Division, organisation_unit_config?: OrganisationUnitConfig) {
     super(name, organisation_unit_config);
