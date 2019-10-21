@@ -1,4 +1,4 @@
-import {calculate_membership_fee} from "./calculate_membership_fee";
+import {calculate_membership_fee} from "../src/calculate_membership_fee";
 import * as models from "../models";
 
 let client = new models.Client("client_a");
