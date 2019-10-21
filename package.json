@@ -1,18 +1,13 @@
 {
   "name": "membership-fee-challenge",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node ./dist/src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/christosnc/membership-fee-challenge.git"
   },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://github.com/christosnc/membership-fee-challenge#readme",
   "dependencies": {
     "typescript": "^3.6.4"
   }
