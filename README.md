@@ -2,7 +2,7 @@
 
 This is a node.js project, using Typescript.
 
-The source code is in `./src`, the test are in `./tests` and the data models are in `models`.
+The source code is in `./src`, the test are in `./tests` and the data models are in `./models`.
 
 For the unit testing I used Jest.
 
