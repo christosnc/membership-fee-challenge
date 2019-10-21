@@ -3,7 +3,7 @@ import * as models from "../models";
 const VAT = 20;
 const MINIMUM_FEE = 120;
 
-function calculate_membership_fee(rent_amount: number, rent_period: string, organisation_unit: models.OrganisationUnit): number{
+export function calculate_membership_fee(rent_amount: number, rent_period: string, organisation_unit: models.OrganisationUnit): number{
   //Input checking
   if(rent_amount < 1){
     throw new Error("Rent amount must be above 1");
@@ -32,10 +32,11 @@ function calculate_membership_fee(rent_amount: number, rent_period: string, orga
     config = index_organisation_unit.config;
   }
 
-  let minFee = MINIMUM_FEE;
   if(config){
     if(config.has_fixed_membership_fee === true){
-      minFee = config.fixed_membership_fee;
+      let fixedFee = config.fixed_membership_fee;
+      let vat_amount = (fixedFee * VAT) / 100;
+      return Math.round(fixedFee + vat_amount);
     }
   }
 
@@ -48,19 +49,11 @@ function calculate_membership_fee(rent_amount: number, rent_period: string, orga
     weeklyRent = rent_amount / 4;
   }
 
+  if(weeklyRent < MINIMUM_FEE){
+    weeklyRent = MINIMUM_FEE;
+  }
+
   let vat_amount = (weeklyRent * VAT) / 100;
 
   return Math.round(weeklyRent + vat_amount);
 }
-
-function testProgram(){
-  let client = new models.Client("client_a");
-  client.createDivision("division_a", new models.OrganisationUnitConfig(true, 500));
-  client.divisions[0].createArea("area_a");
-  client.divisions[0].areas[0].createBranch("branch_a");
-
-  let fee = calculate_membership_fee(1000, "week", client.divisions[0].areas[0].branches[0]);
-  console.log(fee);
-}
-
-testProgram();
