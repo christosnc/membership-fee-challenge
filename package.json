@@ -2,7 +2,6 @@
   "name": "membership-fee-challenge",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/src/index.js",
     "test": "jest"
   },
   "repository": {

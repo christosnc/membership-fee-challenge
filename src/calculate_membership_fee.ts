@@ -3,6 +3,13 @@ import * as models from "../models";
 const VAT = 20;
 const MINIMUM_FEE = 120;
 
+/**
+ * This function calculates the membership fee for a tenant.
+ * 
+ * @param rent_amount The rent amount for the specified period.
+ * @param rent_period The renting period. "week" | "month"
+ * @param organisation_unit The oranisation unit (branch, area, district, client)
+ */
 export function calculate_membership_fee(rent_amount: number, rent_period: string, organisation_unit: models.OrganisationUnit): number{
   //Input checking
   if(rent_amount < 1){
