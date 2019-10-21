@@ -102,9 +102,17 @@ function calculate_membership_fee(rent_amount: number, rent_period: string, orga
   }
 
   //Calculate membership fee
-  
+  let weeklyRent;
+  if(rent_period === "week"){
+    weeklyRent = rent_amount;
+  }
+  else{
+    weeklyRent = rent_amount / 4;
+  }
 
-  return 5;
+  let vat_amount = (weeklyRent * VAT) / 100;
+
+  return Math.round(weeklyRent + vat_amount);
 }
 
 function testProgram(){
