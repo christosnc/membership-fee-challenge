@@ -21,7 +21,7 @@ export function calculate_membership_fee(rent_amount: number, rent_period: strin
   if(rent_period === "week" && (rent_amount < 25 || rent_amount > 2000)){
     throw new Error("Weekly rent amount must be between 25 and 2000");
   }
-  if(rent_period === "month" && (rent_amount < 10 || rent_amount > 8660)) {
+  if(rent_period === "month" && (rent_amount < 110 || rent_amount > 8660)) {
     throw new Error("Monthly rent amount must be between 10 and 8660");
   }
 
